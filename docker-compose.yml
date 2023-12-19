@@ -1,0 +1,18 @@
+volumes:
+  models:
+
+services:
+  fooocus:
+    build: .
+    container_name: fooocus
+    volumes:
+      - models:/app/models
+    ports:
+      - 7865:7865
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1
