@@ -11,7 +11,7 @@ docker pull avilabs/fooocus
 ### Run
 
 ```
-sudo docker run -p 7865:7865 --gpus all -v fooocus:/Fooocus/models avilabs/fooocus
+sudo docker run -p 7865:7865 --gpus all -v fooocus:/app/models avilabs/fooocus
 ```
 
 ### (OR) Build
