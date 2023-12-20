@@ -1,5 +1,25 @@
 # Docker support for fooocus
 
+> This build also runs juggernautXL_v7Rundiffusion.safetensors by default
+
+### Pull Docker Image
+
+```
+docker pull avilabs/fooocus
+```
+
+### Run
+
+```
+sudo docker run -p 7865:7865 --gpus all -v fooocus:/Fooocus/models avilabs/fooocus
+```
+
+### (OR) Build
+
+```
+sudo docker build . -t avilabs/fooocus
+```
+
 ---
 
 <div align=center>
