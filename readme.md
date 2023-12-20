@@ -1,9 +1,13 @@
+# Docker support for fooocus
+
+---
+
 <div align=center>
 <img src="https://github.com/lllyasviel/Fooocus/assets/19834515/483fb86d-c9a2-4c20-997c-46dafc124f25">
 
-**Non-cherry-picked** random batch by just typing two words "forest elf", 
+**Non-cherry-picked** random batch by just typing two words "forest elf",
 
-without any parameter tweaking, without any strange prompt tags. 
+without any parameter tweaking, without any strange prompt tags.
 
 See also **non-cherry-picked** generalization and diversity tests [here](https://github.com/lllyasviel/Fooocus/discussions/808) and [here](https://github.com/lllyasviel/Fooocus/discussions/679) and [here](https://github.com/lllyasviel/Fooocus/discussions/679#realistic).
 
@@ -11,16 +15,15 @@ In the entire open source community, only Fooocus can achieve this level of **no
 
 </div>
 
-
 # Fooocus
 
 Fooocus is an image generating software (based on [Gradio](https://www.gradio.app/)).
 
 Fooocus is a rethinking of Stable Diffusion and Midjourney’s designs:
 
-* Learned from Stable Diffusion, the software is offline, open source, and free.
+- Learned from Stable Diffusion, the software is offline, open source, and free.
 
-* Learned from Midjourney, the manual tweaking is not needed, and users only need to focus on the prompts and images.
+- Learned from Midjourney, the manual tweaking is not needed, and users only need to focus on the prompts and images.
 
 Fooocus has included and automated [lots of inner optimizations and quality improvements](#tech_list). Users can forget all those difficult technical parameters, and just enjoy the interaction between human and computer to "explore new mediums of thought and expanding the imaginative powers of the human species" `[1]`.
 
@@ -34,32 +37,32 @@ Fooocus has simplified the installation. Between pressing "download" and generat
 
 Using Fooocus is as easy as (probably easier than) Midjourney – but this does not mean we lack functionality. Below are the details.
 
-| Midjourney | Fooocus |
-| - | - |
-| High-quality text-to-image without needing much prompt engineering or parameter tuning. <br> (Unknown method) | High-quality text-to-image without needing much prompt engineering or parameter tuning. <br> (Fooocus has offline GPT-2 based prompt processing engine and lots of sampling improvements so that results are always beautiful, no matter your prompt is as short as “house in garden” or as long as 1000 words) |
-| V1 V2 V3 V4 | Input Image -> Upscale or Variation -> Vary (Subtle) / Vary (Strong)|
-| U1 U2 U3 U4 | Input Image -> Upscale or Variation -> Upscale (1.5x) / Upscale (2x) |
-| Inpaint / Up / Down / Left / Right (Pan) | Input Image -> Inpaint or Outpaint -> Inpaint / Up / Down / Left / Right <br> (Fooocus uses its own inpaint algorithm and inpaint models so that results are more satisfying than all other software that uses standard SDXL inpaint method/model) |
-| Image Prompt | Input Image -> Image Prompt <br> (Fooocus uses its own image prompt algorithm so that result quality and prompt understanding are more satisfying than all other software that uses standard SDXL methods like standard IP-Adapters or Revisions) |
-| --style | Advanced -> Style |
-| --stylize | Advanced -> Advanced -> Guidance |
-| --niji | [Multiple launchers: "run.bat", "run_anime.bat", and "run_realistic.bat".](https://github.com/lllyasviel/Fooocus/discussions/679) <br> Fooocus support SDXL models on Civitai <br> (You can google search “Civitai” if you do not know about it) |
-| --quality | Advanced -> Quality |
-| --repeat | Advanced -> Image Number |
-| Multi Prompts (::) | Just use multiple lines of prompts |
-| Prompt Weights | You can use " I am (happy:1.5)". <br> Fooocus uses A1111's reweighting algorithm so that results are better than ComfyUI if users directly copy prompts from Civitai. (Because if prompts are written in ComfyUI's reweighting, users are less likely to copy prompt texts as they prefer dragging files) <br> To use embedding, you can use "(embedding:file_name:1.1)" |
-| --no | Advanced -> Negative Prompt |
-| --ar | Advanced -> Aspect Ratios |
-| InsightFace | Input Image -> Image Prompt -> Advanced -> FaceSwap |
-| Describe | Input Image -> Describe |
+| Midjourney                                                                                                    | Fooocus                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| High-quality text-to-image without needing much prompt engineering or parameter tuning. <br> (Unknown method) | High-quality text-to-image without needing much prompt engineering or parameter tuning. <br> (Fooocus has offline GPT-2 based prompt processing engine and lots of sampling improvements so that results are always beautiful, no matter your prompt is as short as “house in garden” or as long as 1000 words)                                                          |
+| V1 V2 V3 V4                                                                                                   | Input Image -> Upscale or Variation -> Vary (Subtle) / Vary (Strong)                                                                                                                                                                                                                                                                                                     |
+| U1 U2 U3 U4                                                                                                   | Input Image -> Upscale or Variation -> Upscale (1.5x) / Upscale (2x)                                                                                                                                                                                                                                                                                                     |
+| Inpaint / Up / Down / Left / Right (Pan)                                                                      | Input Image -> Inpaint or Outpaint -> Inpaint / Up / Down / Left / Right <br> (Fooocus uses its own inpaint algorithm and inpaint models so that results are more satisfying than all other software that uses standard SDXL inpaint method/model)                                                                                                                       |
+| Image Prompt                                                                                                  | Input Image -> Image Prompt <br> (Fooocus uses its own image prompt algorithm so that result quality and prompt understanding are more satisfying than all other software that uses standard SDXL methods like standard IP-Adapters or Revisions)                                                                                                                        |
+| --style                                                                                                       | Advanced -> Style                                                                                                                                                                                                                                                                                                                                                        |
+| --stylize                                                                                                     | Advanced -> Advanced -> Guidance                                                                                                                                                                                                                                                                                                                                         |
+| --niji                                                                                                        | [Multiple launchers: "run.bat", "run_anime.bat", and "run_realistic.bat".](https://github.com/lllyasviel/Fooocus/discussions/679) <br> Fooocus support SDXL models on Civitai <br> (You can google search “Civitai” if you do not know about it)                                                                                                                         |
+| --quality                                                                                                     | Advanced -> Quality                                                                                                                                                                                                                                                                                                                                                      |
+| --repeat                                                                                                      | Advanced -> Image Number                                                                                                                                                                                                                                                                                                                                                 |
+| Multi Prompts (::)                                                                                            | Just use multiple lines of prompts                                                                                                                                                                                                                                                                                                                                       |
+| Prompt Weights                                                                                                | You can use " I am (happy:1.5)". <br> Fooocus uses A1111's reweighting algorithm so that results are better than ComfyUI if users directly copy prompts from Civitai. (Because if prompts are written in ComfyUI's reweighting, users are less likely to copy prompt texts as they prefer dragging files) <br> To use embedding, you can use "(embedding:file_name:1.1)" |
+| --no                                                                                                          | Advanced -> Negative Prompt                                                                                                                                                                                                                                                                                                                                              |
+| --ar                                                                                                          | Advanced -> Aspect Ratios                                                                                                                                                                                                                                                                                                                                                |
+| InsightFace                                                                                                   | Input Image -> Image Prompt -> Advanced -> FaceSwap                                                                                                                                                                                                                                                                                                                      |
+| Describe                                                                                                      | Input Image -> Describe                                                                                                                                                                                                                                                                                                                                                  |
 
 We also have a few things borrowed from the best parts of LeonardoAI:
 
-| LeonardoAI | Fooocus |
-| - | - |
-| Prompt Magic | Advanced -> Style -> Fooocus V2 |
+| LeonardoAI                                                | Fooocus                                          |
+| --------------------------------------------------------- | ------------------------------------------------ |
+| Prompt Magic                                              | Advanced -> Style -> Fooocus V2                  |
 | Advanced Sampler Parameters (like Contrast/Sharpness/etc) | Advanced -> Advanced -> Sampling Sharpness / etc |
-| User-friendly ControlNets | Input Image -> Image Prompt -> Advanced |
+| User-friendly ControlNets                                 | Input Image -> Image Prompt -> Advanced          |
 
 Fooocus also developed many "fooocus-only" features for advanced users to get perfect results. [Click here to browse the advanced features.](https://github.com/lllyasviel/Fooocus/discussions/117)
 
@@ -115,9 +118,9 @@ See also the common problems and troubleshoots [here](troubleshoot.md).
 
 (Last tested - 2023 Dec 12)
 
-| Colab | Info
-| --- | --- |
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lllyasviel/Fooocus/blob/main/fooocus_colab.ipynb) | Fooocus Official
+| Colab                                                                                                                                                                   | Info             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lllyasviel/Fooocus/blob/main/fooocus_colab.ipynb) | Fooocus Official |
 
 In Colab, you can modify the last line to `!python entry_with_update.py --share` or `!python entry_with_update.py --preset anime --share` or `!python entry_with_update.py --preset realistic --share` for Fooocus Default/Anime/Realistic Edition.
 
@@ -193,7 +196,7 @@ Note that the [minimal requirement](#minimal-requirement) for different platform
 
 Same with the above instructions. You need to change torch to AMD version
 
-    pip uninstall torch torchvision torchaudio torchtext functorch xformers 
+    pip uninstall torch torchvision torchaudio torchtext functorch xformers
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
 
 AMD is not intensively tested, however. The AMD support is in beta.
@@ -243,50 +246,52 @@ See the guidelines [here](https://github.com/lllyasviel/Fooocus/discussions/1405
 
 Below is the minimal requirement for running Fooocus locally. If your device capability is lower than this spec, you may not be able to use Fooocus locally. (Please let us know, in any case, if your device capability is lower but Fooocus still works.)
 
-| Operating System  | GPU                          | Minimal GPU Memory        | Minimal System Memory     | [System Swap](troubleshoot.md) | Note                                  |
-|-------------------|------------------------------|---------------------------|---------------------------|--------------------------------|---------------------------------------|
-| Windows/Linux     | Nvidia RTX 4XXX              | 4GB                       | 8GB                       | Required                       | fastest                               |
-| Windows/Linux     | Nvidia RTX 3XXX              | 4GB                       | 8GB                       | Required                       | usually faster than RTX 2XXX          |
-| Windows/Linux     | Nvidia RTX 2XXX              | 4GB                       | 8GB                       | Required                       | usually faster than GTX 1XXX          |
-| Windows/Linux     | Nvidia GTX 1XXX              | 8GB (&ast; 6GB uncertain) | 8GB                       | Required                       | only marginally faster than CPU       |
-| Windows/Linux     | Nvidia GTX 9XX               | 8GB                       | 8GB                       | Required                       | faster or slower than CPU             |
-| Windows/Linux     | Nvidia GTX < 9XX             | Not supported             | /                         | /                              | /                                     |
-| Windows           | AMD GPU                      | 16GB                      | 8GB                       | Required                       | via DirectML                          |
-| Linux             | AMD GPU                      | 8GB                       | 8GB                       | Required                       | via ROCm                              |
-| Windows           | &ast; AMD GPU ROCm (on hold) | 8GB     (on hold)         | 8GB             (on hold) | Required           (on hold)   | via ROCm     (on hold)                |
-| Mac               | M1/M2 MPS                    | Shared                    | Shared                    | Shared                         | about 9x slower than Nvidia RTX 3XXX  |
-| Windows/Linux/Mac | only use CPU                 | 0GB                       | 32GB                      | Required                       | about 17x slower than Nvidia RTX 3XXX |
+| Operating System  | GPU                       | Minimal GPU Memory     | Minimal System Memory | [System Swap](troubleshoot.md) | Note                                  |
+| ----------------- | ------------------------- | ---------------------- | --------------------- | ------------------------------ | ------------------------------------- |
+| Windows/Linux     | Nvidia RTX 4XXX           | 4GB                    | 8GB                   | Required                       | fastest                               |
+| Windows/Linux     | Nvidia RTX 3XXX           | 4GB                    | 8GB                   | Required                       | usually faster than RTX 2XXX          |
+| Windows/Linux     | Nvidia RTX 2XXX           | 4GB                    | 8GB                   | Required                       | usually faster than GTX 1XXX          |
+| Windows/Linux     | Nvidia GTX 1XXX           | 8GB (\* 6GB uncertain) | 8GB                   | Required                       | only marginally faster than CPU       |
+| Windows/Linux     | Nvidia GTX 9XX            | 8GB                    | 8GB                   | Required                       | faster or slower than CPU             |
+| Windows/Linux     | Nvidia GTX < 9XX          | Not supported          | /                     | /                              | /                                     |
+| Windows           | AMD GPU                   | 16GB                   | 8GB                   | Required                       | via DirectML                          |
+| Linux             | AMD GPU                   | 8GB                    | 8GB                   | Required                       | via ROCm                              |
+| Windows           | \* AMD GPU ROCm (on hold) | 8GB (on hold)          | 8GB (on hold)         | Required (on hold)             | via ROCm (on hold)                    |
+| Mac               | M1/M2 MPS                 | Shared                 | Shared                | Shared                         | about 9x slower than Nvidia RTX 3XXX  |
+| Windows/Linux/Mac | only use CPU              | 0GB                    | 32GB                  | Required                       | about 17x slower than Nvidia RTX 3XXX |
 
-&ast; AMD GPU ROCm (on hold): The AMD is still working on supporting ROCm on Windows.
+\* AMD GPU ROCm (on hold): The AMD is still working on supporting ROCm on Windows.
 
-&ast; Nvidia GTX 1XXX 6GB uncertain: Some people reports 6GB success on GTX 10XX but some other people reports failure cases.
+\* Nvidia GTX 1XXX 6GB uncertain: Some people reports 6GB success on GTX 10XX but some other people reports failure cases.
 
-*Note that Fooocus is only for extremely high quality image generating. We will not support smaller models to reduce the requirement and sacrifice result quality.*
+_Note that Fooocus is only for extremely high quality image generating. We will not support smaller models to reduce the requirement and sacrifice result quality._
 
 ## Troubleshoot
 
 See the common problems [here](troubleshoot.md).
 
 ## Default Models
+
 <a name="models"></a>
 
 Given different goals, the default models and configs of Fooocus is different:
 
-| Task | Windows | Linux args | Main Model | Refiner | Config |
-| --- | --- | --- | --- | --- | --- |
-| General | run.bat |  | [juggernautXL v6_RunDiffusion](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/juggernautXL_version6Rundiffusion.safetensors) | not used | [here](https://github.com/lllyasviel/Fooocus/blob/main/modules/path.py) |
-| Realistic | run_realistic.bat | --preset realistic | [realistic_stock_photo](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticStockPhoto_v10.safetensors) | not used | [here](https://github.com/lllyasviel/Fooocus/blob/main/presets/realistic.json) |
-| Anime | run_anime.bat | --preset anime | [bluepencil_v50](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/bluePencilXL_v050.safetensors) | [dreamsharper_v8](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/DreamShaper_8_pruned.safetensors) (SD1.5) | [here](https://github.com/lllyasviel/Fooocus/blob/main/presets/anime.json) |
+| Task      | Windows           | Linux args         | Main Model                                                                                                                                  | Refiner                                                                                                                   | Config                                                                         |
+| --------- | ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| General   | run.bat           |                    | [juggernautXL v6_RunDiffusion](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/juggernautXL_version6Rundiffusion.safetensors) | not used                                                                                                                  | [here](https://github.com/lllyasviel/Fooocus/blob/main/modules/path.py)        |
+| Realistic | run_realistic.bat | --preset realistic | [realistic_stock_photo](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticStockPhoto_v10.safetensors)                  | not used                                                                                                                  | [here](https://github.com/lllyasviel/Fooocus/blob/main/presets/realistic.json) |
+| Anime     | run_anime.bat     | --preset anime     | [bluepencil_v50](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/bluePencilXL_v050.safetensors)                               | [dreamsharper_v8](https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/DreamShaper_8_pruned.safetensors) (SD1.5) | [here](https://github.com/lllyasviel/Fooocus/blob/main/presets/anime.json)     |
 
 Note that the download is **automatic** - you do not need to do anything if the internet connection is okay. However, you can download them manually if you (or move them from somewhere else) have your own preparation.
 
 ## List of "Hidden" Tricks
+
 <a name="tech_list"></a>
 
 Below things are already inside the software, and **users do not need to do anything about these**.
 
 1. GPT2-based [prompt expansion as a dynamic style "Fooocus V2".](https://github.com/lllyasviel/Fooocus/discussions/117#raw) (similar to Midjourney's hidden pre-processsing and "raw" mode, or the LeonardoAI's Prompt Magic).
-2. Native refiner swap inside one single k-sampler. The advantage is that now the refiner model can reuse the base model's momentum (or ODE's history parameters) collected from k-sampling to achieve more coherent sampling. In Automatic1111's high-res fix and ComfyUI's node system, the base model and refiner use two independent k-samplers, which means the momentum is largely wasted, and the sampling continuity is broken. Fooocus uses its own advanced k-diffusion sampling that ensures seamless, native, and continuous swap in a refiner setup. (Update Aug 13: Actually I discussed this with Automatic1111 several days ago and it seems that the “native refiner swap inside one single k-sampler” is [merged]( https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/12371) into the dev branch of webui. Great!)
+2. Native refiner swap inside one single k-sampler. The advantage is that now the refiner model can reuse the base model's momentum (or ODE's history parameters) collected from k-sampling to achieve more coherent sampling. In Automatic1111's high-res fix and ComfyUI's node system, the base model and refiner use two independent k-samplers, which means the momentum is largely wasted, and the sampling continuity is broken. Fooocus uses its own advanced k-diffusion sampling that ensures seamless, native, and continuous swap in a refiner setup. (Update Aug 13: Actually I discussed this with Automatic1111 several days ago and it seems that the “native refiner swap inside one single k-sampler” is [merged](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/12371) into the dev branch of webui. Great!)
 3. Negative ADM guidance. Because the highest resolution level of XL Base does not have cross attentions, the positive and negative signals for XL's highest resolution level cannot receive enough contrasts during the CFG sampling, causing the results look a bit plastic or overly smooth in certain cases. Fortunately, since the XL's highest resolution level is still conditioned on image aspect ratios (ADM), we can modify the adm on the positive/negative side to compensate for the lack of CFG contrast in the highest resolution level. (Update Aug 16, the IOS App [Drawing Things](https://apps.apple.com/us/app/draw-things-ai-generation/id6444050820) will support Negative ADM Guidance. Great!)
 4. We implemented a carefully tuned variation of the Section 5.1 of ["Improving Sample Quality of Diffusion Models Using Self-Attention Guidance"](https://arxiv.org/pdf/2210.00939.pdf). The weight is set to very low, but this is Fooocus's final guarantee to make sure that the XL will never yield overly smooth or plastic appearance (examples [here](https://github.com/lllyasviel/Fooocus/discussions/117#sharpness)). This can almostly eliminate all cases that XL still occasionally produce overly smooth results even with negative ADM guidance. (Update 2023 Aug 18, the Gaussian kernel of SAG is changed to an anisotropic kernel for better structure preservation and fewer artifacts.)
 5. We modified the style templates a bit and added the "cinematic-default".
@@ -308,29 +313,28 @@ For example, an edited `Fooocus\config.txt` (this file will be generated after t
 
 ```json
 {
-    "path_checkpoints": "D:\\Fooocus\\models\\checkpoints",
-    "path_loras": "D:\\Fooocus\\models\\loras",
-    "path_embeddings": "D:\\Fooocus\\models\\embeddings",
-    "path_vae_approx": "D:\\Fooocus\\models\\vae_approx",
-    "path_upscale_models": "D:\\Fooocus\\models\\upscale_models",
-    "path_inpaint": "D:\\Fooocus\\models\\inpaint",
-    "path_controlnet": "D:\\Fooocus\\models\\controlnet",
-    "path_clip_vision": "D:\\Fooocus\\models\\clip_vision",
-    "path_fooocus_expansion": "D:\\Fooocus\\models\\prompt_expansion\\fooocus_expansion",
-    "path_outputs": "D:\\Fooocus\\outputs",
-    "default_model": "realisticStockPhoto_v10.safetensors",
-    "default_refiner": "",
-    "default_loras": [["lora_filename_1.safetensors", 0.5], ["lora_filename_2.safetensors", 0.5]],
-    "default_cfg_scale": 3.0,
-    "default_sampler": "dpmpp_2m",
-    "default_scheduler": "karras",
-    "default_negative_prompt": "low quality",
-    "default_positive_prompt": "",
-    "default_styles": [
-        "Fooocus V2",
-        "Fooocus Photograph",
-        "Fooocus Negative"
-    ]
+  "path_checkpoints": "D:\\Fooocus\\models\\checkpoints",
+  "path_loras": "D:\\Fooocus\\models\\loras",
+  "path_embeddings": "D:\\Fooocus\\models\\embeddings",
+  "path_vae_approx": "D:\\Fooocus\\models\\vae_approx",
+  "path_upscale_models": "D:\\Fooocus\\models\\upscale_models",
+  "path_inpaint": "D:\\Fooocus\\models\\inpaint",
+  "path_controlnet": "D:\\Fooocus\\models\\controlnet",
+  "path_clip_vision": "D:\\Fooocus\\models\\clip_vision",
+  "path_fooocus_expansion": "D:\\Fooocus\\models\\prompt_expansion\\fooocus_expansion",
+  "path_outputs": "D:\\Fooocus\\outputs",
+  "default_model": "realisticStockPhoto_v10.safetensors",
+  "default_refiner": "",
+  "default_loras": [
+    ["lora_filename_1.safetensors", 0.5],
+    ["lora_filename_2.safetensors", 0.5]
+  ],
+  "default_cfg_scale": 3.0,
+  "default_sampler": "dpmpp_2m",
+  "default_scheduler": "karras",
+  "default_negative_prompt": "low quality",
+  "default_positive_prompt": "",
+  "default_styles": ["Fooocus V2", "Fooocus Photograph", "Fooocus Negative"]
 }
 ```
 
@@ -361,7 +365,7 @@ entry_with_update.py  [-h] [--listen [IP]] [--port PORT]
                       [--preview-option [none,auto,fast,taesd]]
                       [--attention-split | --attention-quad | --attention-pytorch]
                       [--disable-xformers]
-                      [--always-gpu | --always-high-vram | --always-normal-vram | 
+                      [--always-gpu | --always-high-vram | --always-normal-vram |
                        --always-low-vram | --always-no-vram | --always-cpu]
                       [--always-offload-from-vram] [--disable-server-log]
                       [--debug-mode] [--is-windows-embedded-python]
@@ -376,8 +380,8 @@ entry_with_update.py  [-h] [--listen [IP]] [--port PORT]
 
 Fooocus also has many community forks, just like SD-WebUI's [vladmandic/automatic](https://github.com/vladmandic/automatic) and [anapnoe/stable-diffusion-webui-ux](https://github.com/anapnoe/stable-diffusion-webui-ux), for enthusiastic users who want to try!
 
-| Fooocus' forks |
-| - |
+| Fooocus' forks                                                                                                                                                                                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [fenneishi/Fooocus-Control](https://github.com/fenneishi/Fooocus-Control) </br>[runew0lf/RuinedFooocus](https://github.com/runew0lf/RuinedFooocus) </br> [MoonRide303/Fooocus-MRE](https://github.com/MoonRide303/Fooocus-MRE) </br> [metercai/SimpleSDXL](https://github.com/metercai/SimpleSDXL) </br> and so on ... |
 
 See also [About Forking and Promotion of Forks](https://github.com/lllyasviel/Fooocus/discussions/699).
